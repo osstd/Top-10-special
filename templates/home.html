@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Your Special Day</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add your custom styles here */
+        body {
+            background-color: #e8fbe8; /* Set your preferred background color */
+        }
+        .masthead {
+            background: url('../static/assets/img/bg2.jpg') center center;
+            background-size: cover;
+            color: #fff; /* Set your preferred text color */
+            text-align: center;
+            padding: 100px 0;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .fixed-width-alert {
+            max-width: 500px; /* Set the maximum width for the alert message */
+            margin: 0 auto; /* Center the alert message */
+            background-color: #e8fbe8;
+            text-align: center;
+            font-size:20px;
+        }
+        .head {
+            color: #fff;
+        }
+        .card-img {
+            mix-blend-mode: multiply;
+            opacity: 0.85;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="masthead" >
+    <div class="container">
+        {% if results: %}
+        <a class="head" href="{{url_for('index')}}"><h1 class="display-4">Your Top Ten Special</h1></a>
+        {% else: %}
+        <h1 class="display-4">Your Top Ten Special</h1>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Body Content -->
+<div class="container mt-4">
+    {% if not results: %}
+    <div class="row justify-content-center">
+        <div class="container mb-3">
+            <div class="alert alert-info fixed-width-alert" role="alert">
+                To get Billboard's top 10 on your favourite day. Enter your special day.
+            </div>
+        </div>
+            <div class="form-container">
+                <form
+                    name="input"
+                    action="{{url_for('get10')}}"
+                    method="post"
+                >
+                    <div class="form-group">
+                        <label for="specialDay">Input Your Favorite Day</label>
+                        <input type="text" name='date' class="form-control" id="specialDay" placeholder="YYYY-MM-DD" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+    </div>
+    {% endif%}
+
+    {% if results: %}
+    <div class="row justify-content-center">
+        {% for song in list %}
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card text-center mb-3 d-flex justify-content-center">
+
+                         <div class="d-flex justify-content-center mt-5">
+                            <img src="{{ song.img }}" class="card-img" alt="Image" style="width: 200px; height: 200px;">
+                         </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{ song.title }}</h5>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+    <div class="container mb-4">
+        <div class="row justify-content-center">
+            <a class="btn btn-primary" href="{{url_for('index')}}">Home</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
