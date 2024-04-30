@@ -24,16 +24,16 @@ def get_top_10(date):
 
 @app.route('/')
 def index():
-    return render_template('home.html')
+    return render_template('index.html')
 
 
-@app.route('/get10', methods=['GET', 'POST'])
+@app.route('/get10', methods=['POST'])
 def get10():
-    if request.method == 'POST':
-        print(request.form['date'])
-        date = request.form['date']
-        song_list = get_top_10(date)
-        return render_template('home.html', results=True, list=song_list)
+
+    print(request.form['date'])
+    date = request.form['date']
+    song_list = get_top_10(date)
+    return render_template('results.html', list=song_list)
 
 
 if __name__ == '__main__':

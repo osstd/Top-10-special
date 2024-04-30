@@ -1,0 +1,10 @@
+body {
+  background-color: #e8fbe8;
+}
+.masthead {
+  background: url("../assets/img/bg.jpg") center center;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding: 100px 0;
+}

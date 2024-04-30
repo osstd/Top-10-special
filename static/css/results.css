@@ -1,0 +1,39 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.grid-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 75% 25%;
+  border-radius: 10px;
+  border-color: rgb(48, 166, 74);
+  border-style: solid;
+}
+
+.grid-item img {
+  padding: 3% 0;
+  justify-self: center;
+  display: block;
+  object-fit: cover;
+}
+
+.song-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  padding: 5px;
+}
+
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    padding: 10px;
+  }
+}

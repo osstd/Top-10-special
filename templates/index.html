@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+            rel="icon"
+            type="image/png"
+            href="{{ url_for('static', filename='assets/favicon.ico') }}"
+    />
+    <title>Your Special Day</title>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/require.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}"/>
+</head>
+<body>
+<div class="masthead">
+    <div class="container">
+        <h1 class="display-4">Your Top Ten Special</h1>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="container mb-3">
+            <div class="alert alert-info fixed-width-alert" role="alert">
+                To get Billboard's top 10 on your favourite day. Enter your special
+                day.
+            </div>
+        </div>
+        <div class="form-container">
+            <form name="input" action="{{url_for('get10')}}" method="post">
+                <div class="form-group">
+                    <label for="specialDay">Input Your Favorite Day</label>
+                    <input
+                            type="text"
+                            name="date"
+                            class="form-control"
+                            id="specialDay"
+                            placeholder="YYYY-MM-DD"
+                            required
+                    />
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
